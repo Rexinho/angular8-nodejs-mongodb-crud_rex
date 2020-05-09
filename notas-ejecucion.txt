@@ -1,0 +1,31 @@
+CLIENTE (Angular 8)
+===============================================
+# Cliente: This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
+
+* Ingresar a la carpeta '/client'
+* Ejecutar `npm install` para descargar dependencias
+
+# Desarrollo: 
+* Ejecutar `ng serve` para iniciar el servidor
+* Ingresar a `http://localhost:4200/`
+
+* URL de conexion a la API ('http://localhost:4000/api') en los archivos:
+- /services/auth.service.ts
+- /services/contactos.service.ts
+
+
+# Produccion:
+* Ejecutar `ng build` para preparar los archivos en la carpeta `dist/`. Usar `ng build --prod` optimizar los archivos.
+
+
+SERVIDOR - API (NodeJs + Express + MondoDB)
+===============================================
+* Ingresar a la carpeta '/server'
+* Ejecutar `npm install` para descargar dependencias
+* Ejecutar `node index.js` para iniciar el servidor
+
+* URL de conexion a la Base de datos en los archivos:
+- database.js
+
+* Puerto(4000) de ejecucion del servidor en el archivo:
+- index.js

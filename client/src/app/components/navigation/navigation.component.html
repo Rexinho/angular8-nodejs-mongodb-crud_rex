@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/">Contact-App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contacto" routerLinkActive="active"> Contactos</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <ng-container *ngIf="!authService.loggedIn(); else loogedIn">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/registrar" routerLinkActive="active"> Registrar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/ingresar" routerLinkActive="active"> Ingresar</a>
+          </li>
+        </ng-container>
+        <ng-template #loogedIn>
+          <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer;" (click)="authService.logOut()"> Salir</a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </nav>

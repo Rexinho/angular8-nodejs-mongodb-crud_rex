@@ -1,0 +1,114 @@
+<h3 class="text-left">Registro de Contacto</h3>
+<hr>
+
+<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+  <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="contactosService.formData._id">
+  
+  <div class="form-row">
+    <div class="col-md-2">
+      <label>Tipo de documento</label> <small class="text-danger pull-right">*</small>
+    </div>
+    <div class="col-md-4">
+      <select name="tipo_documento" #tipo_documento="ngModel" [(ngModel)]="contactosService.formData.tipo_documento" class="form-control" required>
+        <option value="">-Seleccionar-</option>
+        <option value="DNI">DNI</option>
+        <option value="CE">CE</option>
+      </select>
+      <div class="validation-error" *ngIf="tipo_documento.invalid && tipo_documento.touched">Campo requerido.</div>
+    </div>
+  </div>
+
+  <div class="form-row pt-2">
+    <div class="col-md-2">
+      <label>Numero de documento</label> <small class="text-danger pull-right">*</small>
+    </div>
+    <div class="col-md-4">
+      <input name="numero_documento" #numero_documento="ngModel" [(ngModel)]="contactosService.formData.numero_documento" class="form-control" required>
+      <div class="validation-error" *ngIf="numero_documento.invalid && numero_documento.touched">Campo requerido.</div>
+    </div>
+    <div class="col-md-2">
+      <label>Nombres</label> <small class="text-danger pull-right">*</small>
+    </div>
+    <div class="col-md-4">
+      <input type="text" name="nombres" #nombres="ngModel" [(ngModel)]="contactosService.formData.nombres" class="form-control" required>
+      <div class="validation-error" *ngIf="nombres.invalid && nombres.touched">Campo requerido.</div>
+    </div>
+  </div>
+
+  <div class="form-row pt-2">
+    <div class="col-md-2">
+      <label>Primer Apellido</label> <small class="text-danger pull-right">*</small>
+    </div>
+    <div class="col-md-4">
+      <input name="primer_apellido" #primer_apellido="ngModel" [(ngModel)]="contactosService.formData.primer_apellido" class="form-control" required>
+      <div class="validation-error" *ngIf="primer_apellido.invalid && primer_apellido.touched">Campo requerido.</div>
+    </div>
+    <div class="col-md-2">
+      <label>Segundo Apellido</label>
+    </div>
+    <div class="col-md-4">
+      <input name="segundo_apellido" #segundo_apellido="ngModel" [(ngModel)]="contactosService.formData.segundo_apellido" class="form-control">
+    </div>
+  </div>
+  
+  <div class="form-row pt-2">
+    <div class="col-md-2">
+      <label>Fecha de nacimiento</label> <small class="text-danger pull-right">*</small>
+    </div>
+    <div class="col-md-4">
+      <input [matDatepicker]="myDatepicker" name="fecha_nacimiento" #fecha_nacimiento="ngModel" [(ngModel)]="contactosService.formData.fecha_nacimiento" class="form-control" required style="display:inline;width: 150px;">
+      <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker></mat-datepicker>
+      <div class="validation-error" *ngIf="correo.invalid && correo.touched">Campo requerido y formato válido.</div>
+    </div>
+    <div class="col-md-2">
+      <label>Correo electronico</label> <small class="text-danger pull-right">*</small>
+    </div>
+    <div class="col-md-4">
+      <input name="correo" #correo="ngModel" [(ngModel)]="contactosService.formData.correo" class="form-control" required 
+      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+      <div class="validation-error" *ngIf="correo.invalid && correo.touched">Campo requerido y formato válido.</div>
+    </div>
+  </div>
+
+  <div class="form-row pt-2">
+    <div class="col-md-2">
+      <label>Direccion</label> <small class="text-danger pull-right">*</small>
+    </div>
+    <div class="col-md-10">
+      <input name="direccion" #direccion="ngModel" [(ngModel)]="contactosService.formData.direccion" class="form-control" required>
+      <div class="validation-error" *ngIf="direccion.invalid && direccion.touched">Campo requerido.</div>
+    </div>
+  </div>
+
+  <div class="form-row pt-2">
+    <div class="col-md-2">
+      <label>Celular</label> <small class="text-danger pull-right">*</small>
+    </div>
+    <div class="col-md-4">
+      <input name="celular" #celular="ngModel" [(ngModel)]="contactosService.formData.celular" class="form-control" required>
+      <div class="validation-error" *ngIf="celular.invalid && celular.touched">Campo requerido.</div>
+    </div>
+    <div class="col-md-2">
+      <label>Distrito</label> <small class="text-danger pull-right">*</small>
+    </div>
+    <div class="col-md-4">
+      <select name="distrito" #distrito="ngModel" [(ngModel)]="contactosService.formData.distrito" class="form-control" required>
+        <option value="">-Seleccionar-</option>
+        <option *ngFor="let item of contactosService.distritoList" [value]="item">{{item}}</option>
+      </select>
+      <div class="validation-error" *ngIf="distrito.invalid && distrito.touched">Campo requerido.</div>
+    </div>
+  </div>
+
+  <br>
+  <div class="form-row">
+    <div class="form-group col-md-6 pull-right">
+      <button type="button" (click)="resetForm()" class="btn btn-lg btn-info pull-right">Nuevo</button>
+    </div>
+    <div class="form-group col-md-6">
+      <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-info">Grabar</button>
+    </div>
+  </div>
+  
+</form>

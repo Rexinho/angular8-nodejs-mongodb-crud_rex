@@ -1,0 +1,44 @@
+<h3>Lista de contactos</h3>
+<hr>
+
+<table class="table table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>N°</th>
+      <th>Distrito</th>
+      <th>N° Documento</th>
+      <th>Primer Apellido</th>
+      <th>Segundo Apellido</th>
+      <th>Nombre</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contacto of pageOfItems, let i=index">
+      <td>{{i+1}}</td>
+      <td>{{contacto.distrito}}</td>
+      <td>{{contacto.numero_documento}}</td>
+      <td>{{contacto.primer_apellido}}</td>
+      <td>{{contacto.segundo_apellido}}</td>
+      <td>{{contacto.nombres}}</td>
+      <td>
+        <a href="javascript:;" (click)="populateForm(contacto)"> Editar</a>
+        <a href="javascript:;" (click)="onDelete(contacto._id)"> Eliminar</a>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="7">Total de registros: {{registroTot}} </td>
+    </tr>
+  </tfoot>
+</table>
+
+<div class="card-footer pb-1 pt-3">
+  <jw-pagination 
+    [items]="contactosService.list" 
+    (changePage)="onChangePage($event)"
+    [pageSize]=pageSize
+    [maxPages]=maxPages>
+  </jw-pagination>
+</div>
